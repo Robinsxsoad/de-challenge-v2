@@ -1,0 +1,1 @@
+mvn compile exec:java -D exec.mainClass=com.robin.challenge.EplPipeline -D exec.args="--inputDataset=data/season-0910_json.json" -P direct-runner
