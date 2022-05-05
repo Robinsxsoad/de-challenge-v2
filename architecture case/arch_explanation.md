@@ -8,7 +8,6 @@ The processing of this data is done using an Apache Beam streaming jobs (receivi
 
 The receiving job will be getting the events in real time and forwards them to the processing job. Also, this event could send raw events from the devices to each team platforms.
 
-[//]: # (TODO: add details about the processing job)
+This job will send the events to the processing pipeline. In this pipeline the events are processed aggregating information, making calculations, grouped by specific criteria and so on. Depending on the processing required for the events, more than one pipeline can be needed.
 
 After the processing takes place, the events are sent to a storing job, which will store the data in the EPL database. Also, after processing, the events are sent to a job that delivers the information to two destinations: the bet sites (every 5 minutes) and the sports sites. Also, depending on the information that the EPL wants to provide to each team, the delivery job can send the processed information to the different team platforms for further processing.
-
