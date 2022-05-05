@@ -1,0 +1,1 @@
+mvn compile exec:java -Dexec.mainClass=com.robin.challenge.EplPipeline -Dexec.args="--inputDataset=$1" -Pdirect-runner
