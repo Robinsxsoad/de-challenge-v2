@@ -3,13 +3,14 @@ package com.robin.challenge;
 import com.robin.challenge.domain.MatchResult;
 import com.robin.challenge.domain.SeasonTeamStats;
 import com.robin.challenge.option.EplPipelineOptions;
-import com.robin.challenge.stage.CreateMatchResultDoFn;
-import com.robin.challenge.stage.CreateSeasonStatsPerTeam;
+import com.robin.challenge.stage.*;
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.io.TextIO;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.transforms.GroupByKey;
+import org.apache.beam.sdk.transforms.Max;
 import org.apache.beam.sdk.transforms.ParDo;
+import org.apache.beam.sdk.transforms.ToString;
 import org.apache.beam.sdk.values.KV;
 import org.apache.beam.sdk.values.PCollection;
 
@@ -34,8 +35,27 @@ public class EplPipeline {
         // Group all season result per team and calculate the stats for each one of them.
         // All the stats are mapped using the team name as the key and a model as the value.
         PCollection<KV<String, SeasonTeamStats>> seasonTeamStats = seasonResultsPerTeam
-                .apply(GroupByKey.create())
+                .apply("Grouping all the match results for a single team", GroupByKey.create())
                 .apply("Calculating team stats for all the season", ParDo.of(new CreateSeasonStatsPerTeam()));
+
+
+        // Output the team with most goals for
+        seasonTeamStats.apply(Max.globally(new GoalsForComparator()))
+                .apply(ToString.kvs()) // From here, this is only for debugging TODO: remove this and the next line!
+                .apply(TextIO.write().withoutSharding().to("output/most-goals-for.txt"));
+
+        // Output the team with most goals against
+        seasonTeamStats.apply(Max.globally(new GoalsAgainstComparator()))
+                .apply(ToString.kvs()) // From here, this is only for debugging TODO: remove this and the next line!
+                .apply(TextIO.write().withoutSharding().to("output/most-goals-against.txt"));
+
+
+        // Output the goals over shots on target ratio
+        seasonTeamStats.apply(Max.globally(new GoalsShotsOnTargetComparator()))
+                .apply(ToString.kvs()) // From here, this is only for debugging TODO: remove this and the next line!
+                .apply(TextIO.write().withoutSharding().to("output/most-goals-shots-target-ratio.txt"));
+
+        // Output the position's table for the season
 
 
 

@@ -33,7 +33,7 @@ public class SeasonTeamStats implements Serializable {
     }
 
     public double getGoalsShotsOnTargetRatio() {
-        return (double) this.totalGoalsFor / this.totalShotsOnTarget;
+        return ((double) this.totalGoalsFor) / this.totalShotsOnTarget;
     }
 
 }
