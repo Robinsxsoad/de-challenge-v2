@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * Match result class. This class maps the input dataset, since each element in the file is the result of a match.
+ */
 @Data
 @Builder
 public class MatchResult implements Serializable {

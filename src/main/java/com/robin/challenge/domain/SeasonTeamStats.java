@@ -4,19 +4,23 @@ import lombok.*;
 
 import java.io.Serializable;
 
+/**
+ * This class maps the stats for a specific team in the complete season.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @ToString
 @EqualsAndHashCode
 @Builder
-public class SeasonTeamStats implements Serializable {
+public class SeasonTeamStats implements Comparable<SeasonTeamStats>, Serializable {
+    private String teamName;
     private int totalPoints;
     private int totalGoalsFor;
     private int totalGoalsAgainst;
     private int totalShotsOnTarget;
 
-    public void addPoints(int points){
+    public void addPoints(int points) {
         this.totalPoints = this.totalPoints + points;
     }
 
@@ -34,6 +38,17 @@ public class SeasonTeamStats implements Serializable {
 
     public double getGoalsShotsOnTargetRatio() {
         return ((double) this.totalGoalsFor) / this.totalShotsOnTarget;
+    }
+
+    /**
+     * Implemented to sort list using Collection utils
+     *
+     * @param o the object to be compared.
+     * @return the int value depending on the points of the team.
+     */
+    @Override
+    public int compareTo(SeasonTeamStats o) {
+        return o.getTotalPoints() - this.totalPoints;
     }
 
 }
