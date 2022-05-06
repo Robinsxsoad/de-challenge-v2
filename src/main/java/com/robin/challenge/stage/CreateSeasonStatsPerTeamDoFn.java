@@ -7,9 +7,17 @@ import org.apache.beam.sdk.values.KV;
 
 import java.util.Objects;
 
-import static com.robin.challenge.constant.PipelineConstants.*;
+import static com.robin.challenge.constant.PipelineConstants.AWAY_WINS;
+import static com.robin.challenge.constant.PipelineConstants.DRAW;
+import static com.robin.challenge.constant.PipelineConstants.DRAW_POINTS;
+import static com.robin.challenge.constant.PipelineConstants.HOME_WINS;
+import static com.robin.challenge.constant.PipelineConstants.WIN_POINTS;
 
-public class CreateSeasonStatsPerTeam extends DoFn<KV<String, Iterable<MatchResult>>, KV<String, SeasonTeamStats>> {
+
+/**
+ * This stage creates the season stats for a team. The input is the list of MatchResult associated to a key, which is the team name.
+ */
+public class CreateSeasonStatsPerTeamDoFn extends DoFn<KV<String, Iterable<MatchResult>>, KV<String, SeasonTeamStats>> {
 
     @ProcessElement
     public void processElement(@Element KV<String, Iterable<MatchResult>> teamSeasonResults, OutputReceiver<KV<String, SeasonTeamStats>> output) {
@@ -17,6 +25,7 @@ public class CreateSeasonStatsPerTeam extends DoFn<KV<String, Iterable<MatchResu
         Iterable<MatchResult> seasonMatchResultsPerTeam = teamSeasonResults.getValue();
         SeasonTeamStats seasonTeamStats = new SeasonTeamStats();
         Objects.requireNonNull(seasonMatchResultsPerTeam).forEach(matchResult -> {
+            seasonTeamStats.setTeamName(teamName);
             seasonTeamStats.addPoints(calculatePointsToAdd(teamName, matchResult));
             seasonTeamStats.addTotalGoalsFor(calculateGoalsForToAdd(teamName, matchResult));
             seasonTeamStats.addTotalGoalsAgainst(calculateGoalsAgainstToAdd(teamName, matchResult));

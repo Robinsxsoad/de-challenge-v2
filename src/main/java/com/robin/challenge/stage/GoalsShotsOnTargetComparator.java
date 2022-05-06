@@ -7,6 +7,9 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
+/**
+ * Comparator to sort the teams by shots on target to goal ratio.
+ */
 public class GoalsShotsOnTargetComparator implements Comparator<KV<String, SeasonTeamStats>>, Serializable {
 
     @Override

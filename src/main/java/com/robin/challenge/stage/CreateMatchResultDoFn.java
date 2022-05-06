@@ -7,8 +7,18 @@ import com.robin.challenge.domain.MatchResult;
 import org.apache.beam.sdk.transforms.DoFn;
 import org.apache.beam.sdk.values.KV;
 
-import static com.robin.challenge.constant.PipelineConstants.*;
+import static com.robin.challenge.constant.PipelineConstants.AWAY_SHOTS_ON_TARGET;
+import static com.robin.challenge.constant.PipelineConstants.AWAY_TEAM;
+import static com.robin.challenge.constant.PipelineConstants.FULL_TIME_AWAY_GOALS;
+import static com.robin.challenge.constant.PipelineConstants.FULL_TIME_HOME_GOALS;
+import static com.robin.challenge.constant.PipelineConstants.FULL_TIME_RESULT;
+import static com.robin.challenge.constant.PipelineConstants.HOME_SHOTS_ON_TARGET;
+import static com.robin.challenge.constant.PipelineConstants.HOME_TEAM;
 
+
+/**
+ * This stage creates the MatchResult object for the home and the away team using the input String (the JSON array in the dataset).
+ */
 public class CreateMatchResultDoFn extends DoFn<String, KV<String, MatchResult>> {
 
     static Gson gson = new Gson();
