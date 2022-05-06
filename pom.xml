@@ -41,6 +41,7 @@
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <lombok.version>1.18.22</lombok.version>
         <apache-commons.version>3.12.0</apache-commons.version>
+        <junit.version>5.8.1</junit.version>
     </properties>
 
     <repositories>
@@ -217,6 +218,13 @@
             <!-- When loaded at runtime this will wire up slf4j to the JUL backend -->
             <scope>runtime</scope>
         </dependency>
+
+<!--        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>-->
 
     </dependencies>
 

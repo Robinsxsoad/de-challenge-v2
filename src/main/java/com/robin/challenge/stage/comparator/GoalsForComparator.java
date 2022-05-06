@@ -1,4 +1,4 @@
-package com.robin.challenge.stage;
+package com.robin.challenge.stage.comparator;
 
 import com.robin.challenge.domain.SeasonTeamStats;
 import org.apache.beam.sdk.values.KV;

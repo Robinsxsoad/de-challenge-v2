@@ -1,4 +1,4 @@
-package com.robin.challenge.stage;
+package com.robin.challenge.stage.dofn;
 
 import com.robin.challenge.domain.MatchResult;
 import com.robin.challenge.domain.SeasonTeamStats;
