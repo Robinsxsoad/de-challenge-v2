@@ -37,7 +37,7 @@ public class EplPipeline {
     public static void main(String[] args) {
         EplPipelineOptions eplPipelineOptions = PipelineOptionsFactory.fromArgs(args).withValidation().as(EplPipelineOptions.class);
         Pipeline eplPipeline = Pipeline.create(eplPipelineOptions);
-        runPipeline(eplPipeline, eplPipelineOptions);
+        runEplPipeline(eplPipeline, eplPipelineOptions);
 
     }
 
@@ -47,7 +47,7 @@ public class EplPipeline {
      * @param eplPipeline        Is the pipeline created in the main call of this class.
      * @param eplPipelineOptions Are the options passed to the pipeline. Contains the input dataset.
      */
-    private static void runPipeline(Pipeline eplPipeline, EplPipelineOptions eplPipelineOptions) {
+    public static void runEplPipeline(Pipeline eplPipeline, EplPipelineOptions eplPipelineOptions) {
         // Common part of the pipeline. This applies to all the required reports in the challenge.
         // This reads the dataset specified as parameter and creates objects called MatchResult.
         // The main idea is to have all the match results for a team (being home or away).

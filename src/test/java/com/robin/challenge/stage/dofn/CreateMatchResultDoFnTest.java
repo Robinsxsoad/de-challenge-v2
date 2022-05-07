@@ -26,9 +26,9 @@ public class CreateMatchResultDoFnTest {
     public void mockMatchResult() {
         matchResultA.setAwayTeam("Man City");
         matchResultA.setHomeTeam("Aston Villa");
-        matchResultA.setFullTimeResult("D");
+        matchResultA.setFullTimeResult("A");
         matchResultA.setFullTimeHomeGoals(3);
-        matchResultA.setFullTimeAwayGoals(3);
+        matchResultA.setFullTimeAwayGoals(4);
         matchResultA.setAwayShotsTarget(7);
         matchResultA.setHomeShotsTarget(5);
     }

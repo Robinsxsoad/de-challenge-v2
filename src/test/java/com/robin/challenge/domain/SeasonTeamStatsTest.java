@@ -1,6 +1,7 @@
 package com.robin.challenge.domain;
 
 
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -29,9 +30,8 @@ public class SeasonTeamStatsTest {
     }
 
     @Test
-    @Ignore // TODO fix this test
     public void testGoalsShotsOnTargetRatio() {
-        Assert.assertEquals(0.5d, seasonTeamStats.getGoalsShotsOnTargetRatio());
+        Assert.assertEquals(0, Double.compare(0.5, seasonTeamStats.getGoalsShotsOnTargetRatio()));
     }
 
     @Test
