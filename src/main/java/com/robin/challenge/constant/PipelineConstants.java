@@ -18,6 +18,8 @@ public final class PipelineConstants {
     public static final int WIN_POINTS = 3;
     public static final int DRAW_POINTS = 1;
 
+    public static final String DUMMY_KEY = "dummyKey";
+
     public static final String OUTPUT_FILE_HEADER = "team;total_points;goals_for;goals_against;goals_shots_on_target_ratio";
     public static final String OUTPUT_FILE_FORMAT = "%s;%d;%d;%d;%.2f\n";
 

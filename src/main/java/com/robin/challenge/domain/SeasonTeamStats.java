@@ -50,7 +50,7 @@ public class SeasonTeamStats implements Comparable<SeasonTeamStats>, Serializabl
      * Implemented to sort list using Collection utils
      *
      * @param o the object to be compared.
-     * @return the int value depending on the points of the team.
+     * @return the int value difference between both objects depending on the points of the teams.
      */
     @Override
     public int compareTo(SeasonTeamStats o) {
