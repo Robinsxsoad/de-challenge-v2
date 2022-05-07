@@ -23,7 +23,7 @@ This will run the pipeline using the file called `season-0910_json.json` in the 
 
 ### Bash
 
-In the root folder of the project, there is a script called `run_pipeline.ch`. This pipeline receives the input dataset as parameter and starts the pipeline. For reference, see the example below:
+In the root folder of the project, there is a script called `run_pipeline.sh`. This pipeline receives the input dataset as parameter and starts the pipeline. For reference, see the example below:
 
 ```
 .\run_pipeline.sh data/season-0910_json.json
